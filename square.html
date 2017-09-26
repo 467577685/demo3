@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="300"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var month = ['1月', '2月', '3月', '4月', '5月', '6月'],
+            number = [1000, 800, 600, 400, 200, 0],
+            truenumber = [100, 320, 700, 470, 60, 500],
+            color = ['#f60', '#60f', '#0c0', '#f6c', '#906', '#0cc'];
+    function drawSquare() {
+        context.moveTo(50, 50);
+        context.lineTo(50, 250);
+        context.lineTo(450, 250);
+        context.stroke();
+        for (var i = 0; i < truenumber.length; i++) {
+            context.beginPath();
+            context.lineWidth = '30';
+            context.moveTo(100 + 50 * i, 249 - truenumber[i] * 0.2);
+            context.lineTo(100 + 50 * i, 249);
+            context.strokeStyle = color[i];
+            context.stroke();
+            context.fillText(month[i], 90 + 50 * i, 270);
+        }
+        for (var i = 0; i < number.length; i++) {
+            context.fillText(number[i], 20, 50 + 6.8 * (i * number.length));
+        }
+    }
+    drawSquare();
+</script>
+</body>
+</html>

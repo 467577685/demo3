@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="300"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var section = [0.1, 0.2, 0.3, 0.4],
+            color = ['#f60', '#60f', '#0c0', '#f6c'],
+            text = ['1月', '2月', '3月', '4月'];
+    var PI = 2 * Math.PI,
+            start = 0,
+            end = 0;
+    function drawCircle() {
+        for (var i = 0; i < section.length; i++) {
+            context.beginPath();
+            context.moveTo(300, 150);
+            context.fillStyle = color[i];
+            end = PI * section[i] + start;
+            context.arc(300, 150, 100, start, end);
+            context.fill();
+            context.closePath();
+            start = end;
+        }
+    }
+    drawCircle()
+</script>
+</body>
+</html>
